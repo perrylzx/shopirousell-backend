@@ -9,7 +9,8 @@ import express from 'express';
 
 import 'express-async-errors';
 
-import BaseRouter from '@src/routes/api';
+import ShopsRouter from '@src/routes/shops';
+import ProductRouter from '@src/routes/products';
 
 import EnvVars from '@src/constants/EnvVars';
 
@@ -38,7 +39,8 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 }
 
 // Add APIs, must be after middleware
-app.use('/', BaseRouter);
+app.use('/shops', ShopsRouter);
+app.use('/products', ProductRouter);
 
 
 export default app;
