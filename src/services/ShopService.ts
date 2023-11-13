@@ -5,17 +5,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function getShop(id: number) {
-  const shops = await prisma.shop.findMany({
+  const shops = await prisma.shop.findFirst({
     where: {id},
     include: {products: true}});
   return shops;
 }
 
-async function createShop(name: string, description: string) {
+async function createShop(name: string, description: string, userId: string, imageUrl: string) {
   const shop = await prisma.shop.create({
     data: {
       name,
+      imageUrl,
       description,
+      userId,
     },
   });
   return shop;

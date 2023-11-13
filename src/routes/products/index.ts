@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
 });
 
 // POST route
-router.post('/', async (req: Request<unknown, unknown, {shopId: number; description: string; name: string; price: number}>, res) => {
-  const { shopId, description, name, price } = req.body;
-  const createdProduct = await ProductService.createProduct(shopId, description, name, price);
+router.post('/', async (req: Request<unknown, unknown, {shopId: number; description: string; name: string; price: number; imageUrl: string}>, res) => {
+  const { shopId, description, name, price, imageUrl } = req.body;
+  const createdProduct = await ProductService.createProduct(Number(shopId), description, name, price, imageUrl);
   res.send(createdProduct);
 });
 

@@ -11,6 +11,7 @@ import 'express-async-errors';
 
 import ShopsRouter from '@src/routes/shops';
 import ProductRouter from '@src/routes/products';
+import UserRouter from '@src/routes/users';
 
 import EnvVars from '@src/constants/EnvVars';
 
@@ -41,6 +42,7 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 // Add APIs, must be after middleware
 app.use('/shops', ShopsRouter);
 app.use('/products', ProductRouter);
+app.use('/users', UserRouter);
 
 
 export default app;

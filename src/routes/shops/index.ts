@@ -16,9 +16,9 @@ router.get('/:id', async (req: Request<{id: string}>, res) => {
   res.send(shops);
 });
 
-router.post('/', (req: Request<unknown, unknown, {description: string; name: string}>, res) => {
-  const { description, name } = req.body;
-  const createdShop = ShopService.createShop(name, description);
+router.post('/', async (req: Request<unknown, unknown, {description: string; name: string; userId: string; imageUrl: string;}>, res) => {
+  const { description, name, userId, imageUrl } = req.body;
+  const createdShop = await ShopService.createShop(name, description, userId, imageUrl);
   res.send(createdShop);
 });
 
